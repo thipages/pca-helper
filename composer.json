@@ -1,0 +1,11 @@
+{
+    "require": {
+        "mevdschee/php-crud-api": "^2.11.2"
+    },
+    "require-dev": {
+        "thipages/quickdb": "*",
+        "thipages/sqlitecli": "*"
+    },
+    "name": "thipages/pca-helper",
+    "description": "Helper API for PHP-CRUD-API"
+}
