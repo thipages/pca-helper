@@ -24,41 +24,34 @@ _composer require thipages/pca-helper_
 `$config` being a list of
 - either regular associative arrays (as defined in PHP-CRUD-API)
 ```php
-$config=[
+[
     'debug'=>true,
     'authorization.tableHandler' => function ($operation, $tableName) {
             return $tableName != 'user';
      }
-];
+]
 ```
 - or static methods of predefined class (returning an associative array...)
 ```php
-$config=[
     Base::setup_connection(
         $database, $username, $password,
         $driver = 'mysql',$address='localhost',
         $port = null
     )
-];
 ```
 ```php
-    $config= [
-        Base::setup_SQLite($filePath)
-    ];
+    Base::setup_SQLite($filePath)
 ```
 ```php
-    $config= [
-        Base::setup_cache($cacheType = 'NoCache', $cacheTime = 10, $cachePath = null)
-    ];
+    Base::setup_cache($cacheType = 'NoCache', $cacheTime = 10, $cachePath = null)
 ```
 ```php
-    // Nothe that dbAuth has a strong default setup
-$config= [
     BdAuth::setup(
         $sessionName,
         $passwordLength=12, $mode='required',
         $usersTable='user',$usernameColumn='username',$passwordColumn='password',$ 
         registerUser='1')
+    // Note that dbAuth has a strong default setup
 ];
 ```
 - or static handlers whose name method match the configuration key (by convention)
