@@ -1,6 +1,7 @@
 {
     "require": {
-        "mevdschee/php-crud-api": "^2.11.2"
+        "mevdschee/php-crud-api": "^2.11.2",
+        "ext-pdo": "*"
     },
     "require-dev": {
         "thipages/quickdb": "*",

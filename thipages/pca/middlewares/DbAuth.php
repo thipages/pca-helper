@@ -1,36 +1,19 @@
 <?php
-
-namespace thipages\pca\middlewares\custom;
-use thipages\pca\middlewares\Middleware;
-
-class DbAuth extends Middleware {
-    public const mode=           'mode';
-    public const usersTable=     'usersTable';
-    public const usernameColumn= 'usernameColumn';
-    public const passwordColumn= 'passwordColumn';
-    public const sessionName=    'sessionName';
-    public const registerUser=   'registerUser';
-    public const passwordLength= 'passwordLength|';
-    public const returnedColumns='returnedColumns';
-    private $config;
-    public function __construct($config=[]) {
-        parent::__construct(Middleware::dbAuth);
-        $this->config=$config;
+namespace thipages\pca\middlewares;
+class DbAuth {
+    public static function setup(
+        $sessionName,
+        $passwordLength=12,
+        $mode='required',
+        $usersTable='user',
+        $usernameColumn='username',
+        $passwordColumn='password',
+        $registerUser='1') {
+        return self::addPrefix('dbAuth',get_defined_vars());
     }
-    public function getConfig() {
-        return $this->config;
-    }
-    public static function standard() {
-        return [
-            self::mode=>'required',
-            self::usersTable=>'user',
-            self::usernameColumn=>'username',
-            self::passwordColumn=>'password',
-            self::sessionName=>'user_id',
-            self::registerUser=>'1',
-            self::passwordLength=>'8',
-            self::returnedColumns=>''
-        ];
+    private static function addPrefix ($prefix, $array) {
+        $res = [];
+        foreach ($array as $k=>$v) $res[$prefix.'.'.$k]=$v;
+        return $res;
     }
 }
-

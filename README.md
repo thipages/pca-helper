@@ -1,37 +1,82 @@
-# pca-helper
+# PCA-HELPER
 
-Objectif:
-1. simplifier la configuration de PHP-CRUD-API
-2. Avoir une référence pour le vocabulaire de PHP-CRUD-API (middleware, config)
+PCA-HELPER tries to help to setup the configuration file used in PHP-CRUD-API through the three PHP-CRUD-API installation contexts
+- composer installation
+- usage of api.include.php
+- usage of api.php (maybe less relevant)
 
-Piste : créer un tableau simplifié de config
+by
+- simplifying the database configuration through `setup_connection` and `setup_cache` methods
+- simplifying the dbAuth configuration through `setup` method
+- providing some middlewares tools (`upload`, `autoFK`)
 
-```[
-// EXISTANTS
-// *********
-// Cas 1 : configuration de base (db, cache, ...)
-key1=>value
-// Cas 2 : middleware avec key1 (nom du middleware)
-key1.key2=>value,    // key2 : propriété
-key1.ley2=>function, // key2 : function
 
-// PROPOSITIONS
+> **Drawback** : it adds some workload on the server compared to the native/original single file `api.php`.  May be a cli tool may be a good comprise one day...
 
-// Cas 1.1, grouper les propriétés de la config de base
-// IMPLEMENTE DANS PCA-HELPER
-BaseConfig::db(username, password, driver, database, ...)
-BaseConfig::cache (cacheTyoe, ...)
+## Installation
+_composer require thipages/pca-helper_
 
-// Cas 2.1 : fonction (ou tableau) externe middleware 
-key1.key2=AClass::middlewareFunction(operation, request, ...)) // ou tableau
+## Usage
 
-// Cas 2.2 : fonction (ou tableau) externe et INLUS dans la définition du middleeware
-key1.key2=function (operation, ...) {
-    AClass::middlewareFunction2(operation, request, ...)) // ou tableau
-}
+**Simple static call**
+`Helper::echo($config);`
 
-// Cas 2.3 : fonction (ou tableau) externe TOTALEMENT INLUS dans la configuration
-// IMPLEMENTE DANS PCA-HELPER
-new AClass(parameters) // ou AClass::instance(parameters)
-
+`$config` being a list of
+- either regular associative arrays (as defined in PHP-CRUD-API)
 ```
+[
+    'debug'=>true,
+    'authorization.tableHandler' => function ($operation, $tableName) {
+            return $tableName != 'user';
+     }
+]
+```
+- or static methods of predefined class (returning an associative array...)
+```
+    Base::setup_connection(
+        $database, $username, $password,
+        $driver = 'mysql',$address='localhost',
+        $port = null
+    )
+    Base::setup_SQLite($filePath)
+    Base::setup_cache($cacheType = 'NoCache', $cacheTime = 10, $cachePath = null)
+    // Nothe that dbAuth has a strong default setup
+    BdAuth::setup(
+        $sessionName,
+        $passwordLength=12, $mode='required',
+        $usersTable='user',$usernameColumn='username',$passwordColumn='password',$ 
+        registerUser='1')
+```
+- or static handlers whose name method match the configuration key (by convention)
+```    
+    AutoFK::multiTenancy_handler($relations,$user=['user','id','user_id'])
+    Upload::customzation_beforeHandler ($table, $field, $filesPath)
+```
+
+## Example
+
+```php
+Helper::echo([
+Base::setup_SQLite($dbPath),
+    Base::setup_cache(),
+    DbAuth::setup('pca_helper',8),
+    [
+        'customization.beforeHandler'=>Upload::customzation_beforeHandler('note','document','./files'),
+        'authorization.tableHandler' => function ($operation, $tableName) {
+            return $tableName != 'user';
+        },
+        'multiTenancy.handler' => AutoFK::multiTenancy_handler(['note'=>'user_id']),
+        Base::debug=>true
+    ]
+]);
+```
+
+
+
+
+
+
+
+
+
+
