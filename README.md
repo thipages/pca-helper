@@ -56,10 +56,24 @@ _composer require thipages/pca-helper_
 ```
 - or static handlers whose name method match the configuration key (by convention)
 ```php
-    AutoFK::multiTenancy_handler($relations,$user=['user','id','user_id'])     
+[
+    'multiTenancy.handler'=>AutoFK::multiTenancy_handler($relations,$user=['user','id','user_id'])     
+]
 ```
 ```php
-    Upload::customzation_beforeHandler ($table, $field, $filesPath)     
+[
+    'customzation.beforeHandler'=>Upload::customzation_beforeHandler ($table, $field, $filesPath)     
+]
+```
+You could also write
+```php
+[
+    'customzation.beforeHandler'=>function($operation, $tableName, $request, $environment) {
+       $request= Upload::customzation_beforeHandler ($table, $field, $filesPath)(func_get_args());
+       // ...
+       return $request;
+    }   
+]
 ```
 
 
