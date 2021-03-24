@@ -65,16 +65,6 @@ _composer require thipages/pca-helper_
     'customzation.beforeHandler'=>Upload::customzation_beforeHandler ($table, $field, $filesPath)     
 ]
 ```
-You could also write
-```php
-[
-    'customzation.beforeHandler'=>function($operation, $tableName, $request, $environment) {
-       $request= Upload::customzation_beforeHandler ($table, $field, $filesPath)(func_get_args());
-       // ...
-       return $request;
-    }   
-]
-```
 
 
 ## Example
@@ -86,11 +76,15 @@ Helper::echo(
     Base::setup_cache(),
     DbAuth::setup('pca_helper',8),
     [
-        'customization.beforeHandler'=>Upload::customzation_beforeHandler('note','document','./files'),
         'authorization.tableHandler' => function ($operation, $tableName) {
             return $tableName != 'user';
         },
         'multiTenancy.handler' => AutoFK::multiTenancy_handler(['note'=>'user_id']),
+        'customzation.beforeHandler'=>function($operation, $tableName, $request, $environment) {
+            $request= Upload::customzation_beforeHandler ($table, $field, $filesPath)(func_get_args());
+            // ...
+            return $request;
+        },
         Base::debug=>true
     ]
 ]);
