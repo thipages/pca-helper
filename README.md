@@ -50,19 +50,24 @@ _composer require thipages/pca-helper_
     BdAuth::setup(
         $sessionName,
         $passwordLength=12, $mode='required',
-        $usersTable='user',$usernameColumn='username',$passwordColumn='password',$ 
-        registerUser='1')
+        $usersTable='user',$usernameColumn='username',$passwordColumn='password', 
+        $registerUser='1')
     // Note that dbAuth has a strong default setup
 ```
 - or static handlers whose name method match the configuration key (by convention)
 ```php
 [
-    'multiTenancy.handler'=>AutoFK::multiTenancy_handler($relations,$user=['user','id','user_id'])     
+    'multiTenancy.handler'=>AutoFK::multiTenancy_handler(
+        $relations,
+        $user=['user','id','user_id']
+     )     
 ]
 ```
 ```php
 [
-    'customzation.beforeHandler'=>Upload::customzation_beforeHandler ($table, $field, $filesPath)     
+    'customzation.beforeHandler'=>Upload::customzation_beforeHandler (
+        $table, $field, $filesPath
+    )     
 ]
 ```
 
