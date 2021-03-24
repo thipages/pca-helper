@@ -1,4 +1,28 @@
 {
+    "name": "thipages/pca-helper",
+    "version": "v0.1.0",
+    "description": "Helper for PHP-CRUD-API configuration",
+    "type": "library",
+    "keywords": [
+        "database",
+        "php-crud-api",
+        "middleware",
+        "configuration",
+        "helper"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thierry PAGES",
+            "email": "thipages@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-0": {
+            "thipages\\pca\\": "src/"
+        }
+    },
     "require": {
         "mevdschee/php-crud-api": "^2.11.2",
         "ext-pdo": "*"
@@ -6,7 +30,5 @@
     "require-dev": {
         "thipages/quickdb": "*",
         "thipages/sqlitecli": "*"
-    },
-    "name": "thipages/pca-helper",
-    "description": "Helper API for PHP-CRUD-API"
+    }
 }

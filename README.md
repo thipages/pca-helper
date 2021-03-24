@@ -8,7 +8,8 @@ PCA-HELPER tries to help to setup the configuration file used in [PHP-CRUD-API](
 by
 - simplifying the database configuration through `setup_connection` and `setup_cache` methods
 - simplifying the dbAuth configuration through `setup` method
-- providing some middlewares tools (`upload`, `autoFK`)
+- providing some middlewares tools (`upload`, `autoFK`),
+- writing automatically `middlewares` configuration property
 
 
 > **Drawback** : it adds some workload on the server compared to the native/original single file `api.php`.  May be a cli tool may be a good comprise one day...
