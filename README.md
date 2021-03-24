@@ -60,17 +60,13 @@ $config= [
         $usersTable='user',$usernameColumn='username',$passwordColumn='password',$ 
         registerUser='1')
 ];
-```php
+```
 - or static handlers whose name method match the configuration key (by convention)
 ```php
-$config= [
-    'multiTenancy_handler'=>AutoFK::multiTenancy_handler($relations,$user=['user','id','user_id'])
-];      
+    AutoFK::multiTenancy_handler($relations,$user=['user','id','user_id'])     
 ```
 ```php
-$config= [
-    'customzation.beforeHandler'=>Upload::customzation_beforeHandler ($table, $field, $filesPath)
-];      
+    Upload::customzation_beforeHandler ($table, $field, $filesPath)     
 ```
 
 
