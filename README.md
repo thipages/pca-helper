@@ -20,7 +20,7 @@ _composer require thipages/pca-helper_
 ## Usage
 
 **Simple static call**
-`Helper::echo($config);`
+`Helper::echo(...$config);`
 
 `$config` being a list of
 - either regular associative arrays (as defined in PHP-CRUD-API)
