@@ -52,7 +52,6 @@ _composer require thipages/pca-helper_
         $usersTable='user',$usernameColumn='username',$passwordColumn='password',$ 
         registerUser='1')
     // Note that dbAuth has a strong default setup
-];
 ```
 - or static handlers whose name method match the configuration key (by convention)
 ```php
@@ -66,8 +65,9 @@ _composer require thipages/pca-helper_
 ## Example
 
 ```php
-Helper::echo([
-Base::setup_SQLite($dbPath),
+Helper::echo(
+[
+    Base::setup_SQLite($dbPath),
     Base::setup_cache(),
     DbAuth::setup('pca_helper',8),
     [
