@@ -1,6 +1,6 @@
 # PCA-HELPER
 
-PCA-HELPER tries to help to setup the configuration file used in [PHP-CRUD-API](https://github.com/mevdschee/php-crud-api) through the three PHP-CRUD-API installation contexts by
+PCA-HELPER tries to help to setup the configuration file used in [PHP-CRUD-API](https://github.com/mevdschee/php-crud-api)
 - simplifying the database configuration
 - simplifying the dbAuth configuration
 - providing some middlewares tools (`upload`, `autoFK`),
