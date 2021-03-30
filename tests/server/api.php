@@ -7,12 +7,12 @@ use thipages\pca\middlewares\DbAuth;
 use thipages\pca\middlewares\Upload;
 
 require('./../../vendor/autoload.php');
-require('./../../thipages/pca/Output.php');
-require('./../../thipages/pca/middlewares/AutoFK.php');
-require('./../../thipages/pca/middlewares/DbAuth.php');
-require('./../../thipages/pca/middlewares/Upload.php');
-require('./../../thipages/pca/Helper.php');
-require('./../../thipages/pca/Base.php');
+require('./../../src/thipages/pca/Output.php');
+require('./../../src/thipages/pca/middlewares/AutoFK.php');
+require('./../../src/thipages/pca/middlewares/DbAuth.php');
+require('./../../src/thipages/pca/middlewares/Upload.php');
+require('./../../src/thipages/pca/Helper.php');
+require('./../../src/thipages/pca/Base.php');
 require ('./InitDB.php');
 
 $dbPath='./test.db';
