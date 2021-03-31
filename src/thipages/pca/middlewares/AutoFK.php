@@ -1,5 +1,5 @@
 <?php
-namespace thipages\pca\middlewares\custom;
+namespace thipages\pca\middlewares;
 use Exception;
 
 class AutoFK {
