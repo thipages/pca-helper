@@ -1,6 +1,6 @@
 {
     "name": "thipages/pca-helper",
-    "version": "v0.3.0",
+    "version": "v0.4.0",
     "description": "Helper for PHP-CRUD-API configuration",
     "type": "library",
     "keywords": [
