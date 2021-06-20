@@ -11,6 +11,11 @@ PCA-HELPER tries to help to setup the configuration file used in [PHP-CRUD-API](
 ## Installation
 _composer require thipages/pca-helper_
 
+add an `api.php` file referencing
+- either `require('./api.include.php');`for a single file usage from [PHP-CRUD-API](https://github.com/mevdschee/php-crud-api)
+- or the library with `autoload.php` and `composer require mevdschee/php-crud-api`
+
+
 ## Usage
 
 **Simple static call**

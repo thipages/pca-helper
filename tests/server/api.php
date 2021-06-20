@@ -1,12 +1,5 @@
 <?php
-
-use thipages\pca\Base;
-use thipages\pca\Helper;
-use thipages\pca\middlewares\custom\AutoFK;
-use thipages\pca\middlewares\DbAuth;
-use thipages\pca\middlewares\Upload;
-
-require('./../../vendor/autoload.php');
+require('./api.include.php');
 require('./../../src/thipages/pca/Output.php');
 require('./../../src/thipages/pca/middlewares/AutoFK.php');
 require('./../../src/thipages/pca/middlewares/DbAuth.php');
@@ -14,7 +7,11 @@ require('./../../src/thipages/pca/middlewares/Upload.php');
 require('./../../src/thipages/pca/Helper.php');
 require('./../../src/thipages/pca/Base.php');
 require ('./InitDB.php');
-
+use thipages\pca\Base;
+use thipages\pca\Helper;
+use thipages\pca\middlewares\AutoFK;
+use thipages\pca\middlewares\DbAuth;
+use thipages\pca\middlewares\Upload;
 $dbPath='./test.db';
 $config=[
     Base::setup_SQLite($dbPath),
